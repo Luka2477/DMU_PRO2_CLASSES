@@ -29,7 +29,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println(hanoiMoves(20));
+        System.out.println(hanoiMoves(15));
     }
 
 }
