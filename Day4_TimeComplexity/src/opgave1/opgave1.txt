@@ -1,0 +1,15 @@
+// Opgave 10
+// O(1)
+
+// Opgave 11
+// O(n)
+
+// Opgave 12
+// O(n^2)
+
+// Opgave 13
+// O(n^3)
+
+// Opgave 14
+// Best case: O(n)
+// Worst case: O(n^2)
