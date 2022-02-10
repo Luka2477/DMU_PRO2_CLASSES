@@ -29,12 +29,14 @@ public class Skole {
 
     public double gennemsnit () {
         double sum = 0;
+        int count = 0;
 
         for (int snr : studerende.keySet()) {
             sum += studerende.get(snr).getKarakterer().stream().mapToDouble(d -> d).sum();
+            count += studerende.get(snr).getKarakterer().size();
         }
 
-        return sum;
+        return sum / count;
     }
 
     public Studerende findStuderende (int studieNr) {
