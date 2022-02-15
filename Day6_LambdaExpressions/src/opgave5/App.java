@@ -31,7 +31,7 @@ public class App {
 
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNext()) {
-                set.add(scanner.next());
+                set.add(scanner.next().replaceAll("[0123456789 ,.!?'`´;:\"-]+", ""));
             }
         } catch (IOException e) {
             e.printStackTrace();
