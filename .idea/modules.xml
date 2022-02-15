@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/Day3_CombiningRecursion/Day3_CombiningRecursion.iml" filepath="$PROJECT_DIR$/Day3_CombiningRecursion/Day3_CombiningRecursion.iml" />
       <module fileurl="file://$PROJECT_DIR$/Day4_TimeComplexity/Day4_TimeComplexity.iml" filepath="$PROJECT_DIR$/Day4_TimeComplexity/Day4_TimeComplexity.iml" />
       <module fileurl="file://$PROJECT_DIR$/Day5_CollectionFramework/Day5_CollectionFramework.iml" filepath="$PROJECT_DIR$/Day5_CollectionFramework/Day5_CollectionFramework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day6_LambdaExpressions/Day6_LambdaExpressions.iml" filepath="$PROJECT_DIR$/Day6_LambdaExpressions/Day6_LambdaExpressions.iml" />
     </modules>
   </component>
 </project>
