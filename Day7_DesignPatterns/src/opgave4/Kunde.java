@@ -6,12 +6,11 @@ public class Kunde implements Comparable<Kunde> {
 
     private String navn;
     private int nummer;
-    private Comparator<Kunde> comparator;
+    private static Comparator<Kunde> comparator = new KundeComparatorNavn();
 
-    public Kunde(String navn, int nummer, Comparator<Kunde> comparator) {
+    public Kunde(String navn, int nummer) {
         this.navn = navn;
         this.nummer = nummer;
-        this.comparator = comparator;
     }
 
     public String getNavn() {
@@ -30,12 +29,12 @@ public class Kunde implements Comparable<Kunde> {
         this.nummer = nummer;
     }
 
-    public Comparator<Kunde> getComparator() {
-        return this.comparator;
+    public static Comparator<Kunde> getComparator() {
+        return comparator;
     }
 
-    public void setComparator(Comparator<Kunde> comparator) {
-        this.comparator = comparator;
+    public static void setComparator(Comparator<Kunde> comparator) {
+        Kunde.comparator = comparator;
     }
 
     @Override
@@ -48,7 +47,7 @@ public class Kunde implements Comparable<Kunde> {
 
     @Override
     public int compareTo (Kunde k) {
-        return this.comparator.compare(this, k);
+        return comparator.compare(this, k);
     }
 
 }
