@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/Day5_CollectionFramework/Day5_CollectionFramework.iml" filepath="$PROJECT_DIR$/Day5_CollectionFramework/Day5_CollectionFramework.iml" />
       <module fileurl="file://$PROJECT_DIR$/Day6_LambdaExpressions/Day6_LambdaExpressions.iml" filepath="$PROJECT_DIR$/Day6_LambdaExpressions/Day6_LambdaExpressions.iml" />
       <module fileurl="file://$PROJECT_DIR$/Day7_DesignPatterns/Day7_DesignPatterns.iml" filepath="$PROJECT_DIR$/Day7_DesignPatterns/Day7_DesignPatterns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day9_JUnitTesting/Day9_JUnitTesting.iml" filepath="$PROJECT_DIR$/Day9_JUnitTesting/Day9_JUnitTesting.iml" />
     </modules>
   </component>
 </project>
