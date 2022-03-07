@@ -9,7 +9,7 @@ public class Counter {
 
     public static Counter getInstance () {
         if (uniqueInstance == null) {
-            return new Counter();
+            uniqueInstance = new Counter();
         }
         return uniqueInstance;
     }
