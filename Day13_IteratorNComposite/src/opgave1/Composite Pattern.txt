@@ -1,0 +1,22 @@
+1. Hvad kan vi opnå ved at bruge Composite Pattern?
+    At sammensætte objekter i hierarkier af helhed og dele, for derved at
+    få manipulation af helhed og dele til at foregå på en ensartet måde.
+
+2. Hvilke dele består Composite pattern af?
+    Component som definere et interface for alle objekter i compositionenen: leaves
+    og composite.
+    Leaf som definere opførslen af elementerne i compositionen.
+    Composite som definere opførslen af componenterne der har børn og gemme på dem.
+
+3. Hvordan skal de forskellige klasser i Composite mønsteret programmeres?
+    Component er en abstrakt klasse der definere brugte metoder.
+    Leaf extender Component klassen, men overloader kun de metoder der omhandler
+    opførslen af et element.
+    Composite extender Component klassen, men overloader kun de metoder der
+    omhandler opførslen af componenter og storage af leafs.
+
+4. Forklar eksemplet Designing Menus with Composite.
+    Hver menu er en MenuComposite objekt, hvor alle retter på menuerne er en MenuItemLeaf.
+    Det er endnu en MenuComposite der holder styr på alle menuer.
+    Ved at give MenuCompositet der holder styr på alle menuer til en tjener, kan tjeneren
+    få adgang til alle menuer via den MenuComposite.

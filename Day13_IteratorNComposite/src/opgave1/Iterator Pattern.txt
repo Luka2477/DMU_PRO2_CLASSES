@@ -1,0 +1,19 @@
+1. Hvad opnår vi ved at bruge Iterator Pattern?
+    Gennemløbe objekterne i en container –uden at afsløre
+    den interne struktur af containeren.
+
+2. Beskriv hvordan Iterator Pattern implementeres i praksis og
+hvilke elementer der indgår.
+    Ved brug af aggregate interfaces kan forskellige storage-
+    datatyper gennemløbes på samme vis.
+
+3. Hvordan er sammenhængen mellem Iterator Pattern og metoden
+iterator() i Javas Collection Framework?
+    Java har support for iterators i nogen af Javas collection-
+    orienteret klasser, som ArrayList.
+
+4. Hvorfor udvides aggregatet (collection) ikke bare med metoder
+der gør det muligt at gennemløbe aggregatet?
+    Having a common interface for your aggregates is handy for
+    you client; it decouples your client from the implementation
+    of your collection of objects.
