@@ -11,7 +11,7 @@ public class PersonCollection implements Iterable<Person> {
     // index of the first empty slot in items
     private int size;
 
-    private static int changes = 0;
+    private int changes = 0;
 
     /**
      * Creates an Collection with capacity 16.
@@ -142,15 +142,13 @@ public class PersonCollection implements Iterable<Person> {
 
     // -------------------------------------------------------------------------
 
-    static class PersonIterator implements Iterator<Person> {
+    class PersonIterator implements Iterator<Person> {
 
-        private final Person[] persons;
         private int personCount = 0;
-        private final int changes;
+        private final int localChanges;
 
-        PersonIterator (Person[] persons, int changes) {
-            this.persons = persons;
-            this.changes = changes;
+        PersonIterator () {
+            this.localChanges = changes;
         }
 
         @Override
@@ -160,7 +158,7 @@ public class PersonCollection implements Iterable<Person> {
 
         @Override
         public Person next() {
-            if (changes != PersonCollection.changes) {
+            if (localChanges != changes) {
                 throw new ConcurrentModificationException();
             }
 
@@ -173,7 +171,7 @@ public class PersonCollection implements Iterable<Person> {
 
     @Override
     public Iterator<Person> iterator() {
-        return new PersonIterator(persons, changes);
+        return new PersonIterator();
     }
 
 }
