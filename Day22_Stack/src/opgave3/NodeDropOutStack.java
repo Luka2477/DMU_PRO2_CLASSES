@@ -30,6 +30,10 @@ public class NodeDropOutStack implements StackI {
 
     @Override
     public Object pop() {
+        if (first == null) {
+            return null;
+        }
+
         Node temp = first;
         first = first.next;
         size--;
