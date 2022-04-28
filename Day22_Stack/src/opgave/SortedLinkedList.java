@@ -1,4 +1,6 @@
-package opgave2;
+package opgave;
+
+import java.util.Iterator;
 
 public class SortedLinkedList {
 
@@ -42,6 +44,47 @@ public class SortedLinkedList {
 	}
 
 	/**
+	 * Tilføjer alle elementerne fra list til den aktuelle liste.
+	 * Listen er fortsat sorteret i henhold til den naturlige ordning på
+	 * elementerne.
+	 */
+	public void addAll(SortedLinkedList list) {
+		Node newNode = list.first;
+		if (first == null) {
+			first = newNode;
+			newNode = newNode.next;
+			if (newNode.next == null) {
+				return;
+			}
+		}
+
+		Node temp = first;
+		if (temp.data.compareTo(newNode.data) >= 0) {
+			first = newNode;
+			newNode.next = temp;
+			newNode = newNode.next;
+			if (newNode.next == null) {
+				return;
+			}
+		}
+
+		while (newNode != null) {
+			if (temp.next == null) {
+				temp.next = newNode;
+				break;
+			} else if (temp.next.data.compareTo(newNode.data) >= 0) {
+				Node tempNewNode = newNode.next;
+				Node temp2 = temp.next;
+				temp.next = newNode;
+				newNode.next = temp2;
+				newNode = tempNewNode;
+			} else {
+				temp = temp.next;
+			}
+		}
+	}
+
+	/**
 	 * Udskriver elementerne fra listen i sorteret rækkefølge
 	 */
 	public void udskrivElements() {
@@ -72,6 +115,17 @@ public class SortedLinkedList {
 		return count;
 	}
 
+	public int countElementsRec() {
+		return countHelper(first);
+	}
+
+	private int countHelper(Node curr) {
+		if (curr == null) {
+			return 0;
+		} else {
+			return countHelper(curr.next) + 1;
+		}
+	}
 	
 	/**
 	 * Fjerner det sidste (altså det største) element i listen. Listen skal fortsat være
@@ -127,11 +181,35 @@ public class SortedLinkedList {
 		return found;
 	}
 
+	public Iterator<Object> listIterator() {
+		return new SortedLinkedListIterator();
+	}
+
 	
 	
 	// Privat indre klasse der modellerer en node i listen
 	private class Node {
 		public String data;
 		public Node next;
+	}
+
+
+
+	private class SortedLinkedListIterator implements Iterator<Object> {
+		private Node curr;
+
+		public SortedLinkedListIterator() {
+			curr = first;
+		}
+
+		public Object next() {
+			Node temp = curr;
+			curr = curr.next;
+			return temp.data;
+		}
+
+		public boolean hasNext() {
+			return curr != null;
+		}
 	}
 }
