@@ -49,14 +49,12 @@ public class HashSetLinearProbing {
 	public boolean add(Object x) {
 		int hash = hashValue(x);
 		boolean inserted = false;
-		currentSize++;
 
-		if (contains(x)) {
-			inserted = false;
-		} else {
+		if (!contains(x)) {
 			while (!inserted) {
 				if (buckets[hash] == null || buckets[hash] == DELETED) {
 					buckets[hash] = x;
+					currentSize++;
 					inserted = true;
 				} else {
 					hash = (hash + 1) % buckets.length;

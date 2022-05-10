@@ -102,6 +102,7 @@ public class HashSetChaining {
 				if (curr.next.data.equals(x)) {
 					found = true;
 					curr.next = curr.next.next;
+					currentSize--;
 				} else {
 					curr = curr.next;
 				}
