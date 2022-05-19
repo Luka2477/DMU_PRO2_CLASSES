@@ -35,9 +35,8 @@ public class DictionaryHashMap<K, V> implements Dictionary<K, V> {
 
     @Override
     public V put(K key, V value) {
-        V val = get(key);
         int i = key.hashCode() % N;
-        tabel[i].put(key, value);
+        V val = tabel[i].put(key, value);
 
         if (val == null) size++;
 
@@ -46,14 +45,10 @@ public class DictionaryHashMap<K, V> implements Dictionary<K, V> {
 
     @Override
     public V remove(K key) {
-        if (isEmpty()) return null;
+        int i = key.hashCode() % N;
+        V val = tabel[i].remove(key);
 
-        V val = get(key);
-        if (val != null) {
-            int i = key.hashCode() % N;
-            tabel[i].remove(key);
-            size--;
-        }
+        if (val != null) size--;
 
         return val;
     }
