@@ -1,9 +1,10 @@
 package afleveringsopgave;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DictonaryArrayList<K, V> implements Dictionary<K, V> {
-    private final ArrayList<V>[] dict;
+    private final ArrayList<Entry>[] dict;
     private int size;
 
     @SuppressWarnings("unchecked")
@@ -18,7 +19,13 @@ public class DictonaryArrayList<K, V> implements Dictionary<K, V> {
     public V get(K key) {
         int i = key.hashCode() % dict.length;
 
-        return (dict[i].size() == 1) ? dict[i].get(0) : null;
+        for (Entry e : dict[i]) {
+            if (e.key.equals(key)) {
+                return e.val;
+            }
+        }
+
+        return null;
     }
 
     @Override
@@ -30,26 +37,63 @@ public class DictonaryArrayList<K, V> implements Dictionary<K, V> {
     public V put(K key, V value) {
         int i = key.hashCode() % dict.length;
 
-        V temp = null;
-        if (get(key) != null) temp = dict[i].set(0, value);
-        else dict[i].add(value);
-        size++;
+        for (Entry e : dict[i]) {
+            if (e.key.equals(key)) {
+                V temp = e.val;
+                e.val = value;
+                return temp;
+            }
+        }
 
-        return (temp == null) ? value : temp;
+        dict[i].add(new Entry(key, value));
+        size++;
+        return null;
     }
 
     @Override
     public V remove(K key) {
         int i = key.hashCode() % dict.length;
 
-        V ret = (dict[i].size() == 1) ? dict[i].remove(0) : null;
-        if (ret != null) size--;
+        for (Entry e : dict[i]) {
+            if (e.key.equals(key)) {
+                V temp = e.val;
+                dict[i].remove(e);
+                size--;
+                return temp;
+            }
+        }
 
-        return ret;
+        return null;
     }
 
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public String toString() {
+        return "DictonaryArrayList{" +
+                "dict=" + Arrays.toString(dict) +
+                ", size=" + size +
+                '}';
+    }
+
+    class Entry {
+        public K key;
+        public V val;
+
+        public Entry(K key, V val) {
+            this.key = key;
+            this.val = val;
+        }
+
+        @Override
+        public String toString() {
+            return "Entry{" +
+                    "key=" + key +
+                    ", val=" + val +
+                    '}';
+        }
     }
 }

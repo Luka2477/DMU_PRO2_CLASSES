@@ -26,5 +26,7 @@ public class DictionaryDemo {
         System.out.println(dictionary.put(8, "Ida"));
         System.out.println(dictionary.get(8));
 
+        System.out.println();
+        System.out.println(dictionary);
     }
 }
